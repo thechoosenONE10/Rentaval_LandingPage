@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Rentaval Website</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-logo">
+          <img src="./assets/LogoRentavalAmarillo.png" alt="Rentaval Logo" />
+        </div>
+
+        <!-- Menú hamburguesa -->
+        <button class="hamburger" id="hamburger" aria-label="Menú">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <!-- Menú de navegación -->
+        <ul class="navbar-menu" id="navbarMenu">
+          <li><a href="#inicio" class="nav-link">Inicio</a></li>
+          <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+          <li><a href="#investigacion" class="nav-link">Investigación</a></li>
+          <li><a href="#asesores" class="nav-link">Asesores</a></li>
+          <li><a href="#contacto" class="nav-link">Contáctanos</a></li>
+          <li><a href="#portal" class="nav-link">Portal</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="herosection" id="inicio">
+      <div class="hero-content">
+        <h1>Blindaje legal en arrendamientos</h1>
+
+        <h2>
+          Investigamos, estructuramos y respaldamos arrendamientos para proteger
+          tu inmueble, tu renta y tu tranquilidad.
+        </h2>
+
+        <div class="hero-buttons">
+          <button class="btn-primary">Quiero proteger mi renta</button>
+          <button class="btn-secondary">Soy asesor inmobiliario</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="risk-section">
+      <div class="risk-content">
+        <h1>Protege tu patrimonio</h1>
+        <h2>Arrendar sin prevención legal expone tu patrimonio a:</h2>
+
+        <ul class="risk-list">
+          <li>Impagos prolongados</li>
+          <li>Conflictos legales costosos</li>
+          <li>Desgaste emocional</li>
+          <li>Procesos judiciales mal estructurados</li>
+        </ul>
+
+        <button class="risk-btn">Póliza jurídica de arrendamiento</button>
+      </div>
+
+      <div class="risk-illustration">
+        <img src="./assets/undraw_town.svg" alt="" />
+      </div>
+    </section>
+
+    <section class="brand-section" id="nosotros">
+      <div class="brand-header">
+        <h1>Nuestra marca</h1>
+        <h2>
+          En Rentaval entendemos que un contrato por sí solo no protege. Por eso
+          trabajamos bajo un modelo integral de:
+        </h2>
+      </div>
+
+      <div class="brand-cards">
+        <div class="brand-card">
+          <span class="card-accent"></span>
+          <div class="brand-card-logo">
+            <img src="./assets/LogoRentavalBlanco.png" alt="Logo Rentaval" />
+          </div>
+          <h3>Servicio</h3>
+          <p>Investigación profesional del arrendatario.</p>
+        </div>
+
+        <div class="brand-card">
+          <span class="card-accent"></span>
+          <div class="brand-card-logo">
+            <img src="./assets/LogoRentavalBlanco.png" alt="Logo Rentaval" />
+          </div>
+          <h3>Redacción</h3>
+          <p>Contratos jurídicamente sólidos y actualizados.</p>
+        </div>
+
+        <div class="brand-card">
+          <span class="card-accent"></span>
+          <div class="brand-card-logo">
+            <img src="./assets/LogoRentavalBlanco.png" alt="Logo Rentaval" />
+          </div>
+          <h3>Protección</h3>
+          <p>Respaldo legal durante toda la vigencia.</p>
+        </div>
+      </div>
+
+      <h4 class="brand-footer">
+        ¡Todo acompañado por una operación formal y documentada!
+      </h4>
+    </section>
+
+    <section class="process-section">
+      <h1>¿Cómo trabajamos?</h1>
+
+      <div class="process-cards">
+        <div
+          class="process-card"
+          style="background-image: url('./assets/proces1.jpg')"
+        >
+          <span class="card-accent"></span>
+          <div class="card-overlay"></div>
+
+          <div class="card-content">
+            <h2>Investigación</h2>
+            <p>Analizamos a fondo el perfil del arrendatario y su historial.</p>
+          </div>
+        </div>
+
+        <div
+          class="process-card"
+          style="background-image: url('./assets/proces2.jpg')"
+        >
+          <span class="card-accent"></span>
+          <div class="card-overlay"></div>
+
+          <div class="card-content">
+            <h2>Redacción</h2>
+            <p>Elaboramos contratos jurídicamente sólidos y actualizados.</p>
+          </div>
+        </div>
+
+        <div
+          class="process-card"
+          style="background-image: url('./assets/proces3.jpg')"
+        >
+          <span class="card-accent"></span>
+          <div class="card-overlay"></div>
+
+          <div class="card-content">
+            <h2>Protección</h2>
+            <p>Te respaldamos legalmente durante toda la vigencia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="investigation-section" id="investigacion">
+      <div class="investigation-wrapper">
+        <div class="investigation-image">
+          <img src="./assets/Investigation.jpg" alt="" />
+        </div>
+
+        <div class="investigation-content">
+          <h1>Investigación</h1>
+          <h2>Investigación de persona física</h2>
+
+          <ul>
+            <li>Validación de identidad</li>
+            <li>Antecedentes legales</li>
+            <li>Antecedentes crediticios</li>
+            <li>Antecedentes criminales</li>
+            <li>Antecedentes arrendatarios</li>
+            <li>Validación de capacidad de pago</li>
+            <li>Autenticidad de estados de cuenta bancarios</li>
+            <li>Antecedentes en el Registro Nacional Arrendatario</li>
+          </ul>
+
+          <div class="investigation-footer">
+            <span>Cobertura nacional</span>
+            <button>Solicitar investigación</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits-section" id="asesores">
+      <div class="benefits-wrapper">
+        <div class="benefits-content">
+          <h1>Beneficios de Rentaval</h1>
+          <h2>Rentaval no compite contigo, te respalda</h2>
+
+          <p>
+            Trabajar con Rentaval te permite ofrecer a tus clientes seguridad,
+            prevención y respaldo jurídico, elevando tu nivel profesional.
+          </p>
+
+          <h3>Beneficios</h3>
+          <ul>
+            <li>Comisión por pólizas colocadas</li>
+            <li>Investigación profesional para tus clientes</li>
+            <li>Contratos sólidos y actualizados</li>
+            <li>Respaldo legal continuo</li>
+            <li>Capacitación y networking</li>
+            <li>Soporte operativo y jurídico</li>
+          </ul>
+
+          <button>Quiero ser asesor aliado</button>
+        </div>
+
+        <div class="benefits-image">
+          <img
+            src="./assets/BusinessMan.jpg"
+            alt="Hombre de negocios cerrando un trato satisfactoriamente"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="protection-section" id="portal">
+      <div class="protection-sidebar">
+        <h1 class="protection-title">Tipos de protección inmobiliaria.</h1>
+        <div class="protection-logo-container">
+          <div class="logo-box">
+            <img src="./assets/LogoRentavalBlanco.png" alt="Logo Rentaval" />
+          </div>
+        </div>
+      </div>
+
+      <div class="protection-grid">
+        <div class="protection-card">
+          <div class="card-img-container">
+            <img src="./assets/house.jpg" alt="Casa habitación" />
+          </div>
+          <h2 class="card-label">Casa habitación</h2>
+        </div>
+
+        <div class="protection-card">
+          <div class="card-img-container">
+            <img src="./assets/Departments.jpg" alt="Departamento" />
+          </div>
+          <h2 class="card-label">Departamento</h2>
+        </div>
+
+        <div class="protection-card">
+          <div class="card-img-container">
+            <img src="./assets/commercial_premises.jpg" alt="Local" />
+          </div>
+          <h2 class="card-label">Local</h2>
+        </div>
+
+        <div class="protection-card">
+          <div class="card-img-container">
+            <img src="./assets/store.jpg" alt="Almacén" />
+          </div>
+          <h2 class="card-label">Almacén</h2>
+        </div>
+
+        <div class="protection-card">
+          <div class="card-img-container">
+            <img src="./assets/office.jpg" alt="Oficina" />
+          </div>
+          <h2 class="card-label">Oficina</h2>
+        </div>
+
+        <div class="protection-card">
+          <div class="card-img-container">
+            <img src="./assets/Airbnb.jpg" alt="Airbnb" />
+          </div>
+          <h2 class="card-label">Airb&b</h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+      <h1 class="section-title">Contáctanos</h1>
+
+      <div class="contact-container">
+        <form class="contact-form">
+          <div class="form-group">
+            <label>Correo</label>
+            <input type="email" />
+          </div>
+          <div class="form-group">
+            <label>Número</label>
+            <input type="text" />
+          </div>
+          <div class="form-group">
+            <label>Ciudad</label>
+            <input type="text" />
+          </div>
+          <div class="form-group">
+            <label>Servicio</label>
+            <input type="text" />
+          </div>
+          <div class="form-group">
+            <label>Monto mensual de renta</label>
+            <input type="text" />
+          </div>
+          <button type="submit" class="btn-send">Enviar</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="advisor-section">
+      <hr class="divider" />
+      <div class="advisor-content">
+        <p>
+          ¿Quieres un acercamiento más humano?<br />
+          Contacta con un asesor dando click al siguiente botón.
+        </p>
+        <button class="btn-advisor">Contacta a un asesor</button>
+      </div>
+    </section>
+
+    <footer class="main-footer">
+      <div class="footer-bar">
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Investigación</a></li>
+            <li><a href="#">Asesor</a></li>
+            <li><a href="#">Contactanos</a></li>
+            <li><a href="#">Portal</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-socials">
+          <a href="#" class="social-link" aria-label="WhatsApp">
+            <img src="./assets/whatsapp.png" alt="WhatsApp" />
+          </a>
+          <a href="#" class="social-link" aria-label="Facebook">
+            <img src="./assets/facebook.png" alt="Facebook" />
+          </a>
+          <a href="#" class="social-link" aria-label="Instagram">
+            <img src="./assets/instagram.png" alt="Instagram" />
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Menú hamburguesa
+      const hamburger = document.getElementById("hamburger");
+      const navbarMenu = document.getElementById("navbarMenu");
+      const navLinks = document.querySelectorAll(".nav-link");
+      const body = document.body;
+
+      // Toggle del menú
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navbarMenu.classList.toggle("active");
+        body.classList.toggle("menu-open");
+      });
+
+      // Cerrar menú al hacer click en un link
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          // Obtener el destino
+          const targetId = link.getAttribute("href");
+          const targetSection = document.querySelector(targetId);
+
+          // Cerrar el menú
+          hamburger.classList.remove("active");
+          navbarMenu.classList.remove("active");
+          body.classList.remove("menu-open");
+
+          // Scroll suave a la sección
+          if (targetSection) {
+            const navbarHeight = document.querySelector(".navbar").offsetHeight;
+            const targetPosition = targetSection.offsetTop - navbarHeight;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Cerrar menú al hacer click fuera
+      navbarMenu.addEventListener("click", (e) => {
+        if (e.target === navbarMenu) {
+          hamburger.classList.remove("active");
+          navbarMenu.classList.remove("active");
+          body.classList.remove("menu-open");
+        }
+      });
+    </script>
+  </body>
+</html>
