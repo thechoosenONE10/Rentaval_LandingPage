@@ -157,21 +157,49 @@ counters.forEach((counter) => {
 });
 
 // ================================
-// PARALLAX EFFECT FOR HERO
+// PARALLAX EFFECT FOR INVESTIGATION SECTION (DESKTOP ONLY)
 // ================================
-const heroSection = document.querySelector(".herosection");
+const investigationSection = document.querySelector(
+  ".investigation-hero-section"
+);
+const investigationImg = document.querySelector(".investigation-hero-img");
 
-if (heroSection) {
-  window.addEventListener("scroll", () => {
-    const scrolled = window.pageYOffset;
-    const heroBackground = heroSection.querySelector("::before");
+function updateInvestigationParallax() {
+  if (window.innerWidth > 768 && investigationSection && investigationImg) {
+    const rect = investigationSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
 
-    // Parallax effect
-    if (scrolled < window.innerHeight) {
-      heroSection.style.transform = `translateY(${scrolled * 0.5}px)`;
-      heroSection.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
+    // Solo calculamos si la sección es visible en el viewport
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      // Punto 0: La sección entra por abajo
+      // Punto 1: La sección sale por arriba
+      const totalDist = windowHeight + rect.height;
+      const currentDist = windowHeight - rect.top;
+      let progress = currentDist / totalDist;
+
+      progress = Math.max(0, Math.min(1, progress));
+
+      // El valor 30 corresponde al 130% de altura en CSS
+      const movementRange = 30;
+      const translateY = -(progress * movementRange);
+
+      // Usamos requestAnimationFrame para que sea suave (60fps)
+      requestAnimationFrame(() => {
+        investigationImg.style.transform = `translateY(${translateY}%)`;
+      });
     }
+  } else if (investigationImg) {
+    investigationImg.style.transform = "translateY(0)";
+  }
+}
+
+// Aplicar parallax al scroll
+if (investigationSection && investigationImg) {
+  window.addEventListener("scroll", updateInvestigationParallax, {
+    passive: true,
   });
+  window.addEventListener("resize", updateInvestigationParallax);
+  window.addEventListener("load", updateInvestigationParallax);
 }
 
 // ================================
@@ -433,12 +461,3 @@ document.addEventListener("keydown", (e) => {
     });
   }
 });
-
-// ================================
-// CONSOLE MESSAGE
-// ================================
-console.log(
-  "%c¡Bienvenido a Rentaval! 🏠",
-  "color: #c39c05; font-size: 24px; font-weight: bold;"
-);
-console.log("%cTu renta segura", "color: #202f58; font-size: 16px;");

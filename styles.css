@@ -59,6 +59,33 @@ body {
 }
 
 /* ==================================
+   SCROLLBAR PERSONALIZADA
+================================== */
+/* Para navegadores basados en Webkit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1a2545;
+}
+
+/* Para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) #f1f1f1;
+}
+
+/* ==================================
    NUEVAS ANIMACIONES Y EFECTOS
 ================================== */
 
@@ -380,6 +407,12 @@ body {
   transition: all 0.3s ease;
 }
 
+.navbar h1 {
+  font-size: 24px;
+  color: var(--secondary-color);
+  margin-left: 1rem;
+}
+
 .navbar.scrolled {
   background-color: rgba(32, 47, 88, 0.95);
   box-shadow: 0 4px 30px rgba(32, 47, 88, 0.3);
@@ -494,10 +527,10 @@ body.menu-open {
   overflow: hidden;
 }
 
-/*HERO SECTION*/
+/*HERO SECTION - ACTUALIZADO CON PICTURE Y MAYOR HEIGHT*/
 .herosection {
   position: relative;
-  min-height: 480px;
+  min-height: 650px;
   background-color: var(--bg-secondary);
   display: flex;
   align-items: center;
@@ -505,16 +538,22 @@ body.menu-open {
   overflow: hidden;
 }
 
-.herosection::before {
-  content: "";
+/* Picture responsivo para HeroSection */
+.hero-picture {
   position: absolute;
   inset: 0;
-  background-image: url("./assets/HeroSectionImg6.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
   opacity: 0.85;
-  z-index: 1;
   transition: transform 0.1s ease-out;
 }
 
@@ -695,7 +734,7 @@ body.menu-open {
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
 }
 
-/*BRAND SECTION*/
+/*BRAND SECTION - ACTUALIZADO CON ESTILO DE PROCESS CARDS*/
 .brand-section {
   padding: 5rem 6rem;
   background-color: var(--bg-secondary);
@@ -728,33 +767,84 @@ body.menu-open {
 
 .brand-card {
   position: relative;
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 2.5rem 2rem 2rem;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.25s ease, box-shadow 0.25s ease,
-    border-color 0.25s ease;
+  height: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Picture responsivo para Brand Cards */
+.brand-card-picture {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.brand-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.brand-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+.brand-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background-color: var(--secondary-color);
+  z-index: 3;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(32, 47, 88, 0.2),
+    rgba(32, 47, 88, 0.75)
+  );
+  z-index: 1;
+  transition: background 0.3s ease;
+}
+
+.brand-card:hover .card-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(32, 47, 88, 0.1),
+    rgba(32, 47, 88, 0.65)
+  );
+}
+
+.brand-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  color: #ffffff;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-.brand-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--secondary-color);
-}
-
-.brand-card:hover .brand-card-logo {
-  transform: scale(1.1) rotate(5deg);
-}
-
 .brand-card-logo {
   width: 70px;
   height: 70px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -765,33 +855,27 @@ body.menu-open {
   transition: transform 0.3s ease;
 }
 
+.brand-card:hover .brand-card-logo {
+  transform: scale(1.1) rotate(5deg);
+}
+
 .brand-card-logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.card-accent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  background-color: var(--secondary-color);
-  border-radius: 10px 10px 0 0;
-}
-
 .brand-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
+  margin-bottom: 0.5rem;
   color: var(--secondary-color);
-  margin-bottom: 0.75rem;
 }
 
 .brand-card p {
   font-size: 0.95rem;
-  color: var(--text-main);
   line-height: 1.5;
+  opacity: 0.95;
 }
 
 .brand-footer {
@@ -800,7 +884,7 @@ body.menu-open {
   color: var(--secondary-color);
 }
 
-/*PROCESS SECTION*/
+/*PROCESS SECTION - ACTUALIZADO CON PICTURE*/
 .process-section {
   padding: 5rem 6rem;
   background-color: var(--bg-primary);
@@ -825,12 +909,27 @@ body.menu-open {
   position: relative;
   height: 320px;
   border-radius: 16px;
-  background-size: cover;
-  background-position: center;
   overflow: hidden;
   box-shadow: var(--shadow-md);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Picture responsivo para Process Cards */
+.process-card-picture {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.process-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .process-card:hover {
@@ -856,18 +955,6 @@ body.menu-open {
   z-index: 3;
 }
 
-.card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(32, 47, 88, 0.2),
-    rgba(32, 47, 88, 0.75)
-  );
-  z-index: 1;
-  transition: background 0.3s ease;
-}
-
 .card-content {
   position: absolute;
   bottom: 2rem;
@@ -889,115 +976,7 @@ body.menu-open {
   opacity: 0.95;
 }
 
-/*INVESTIGATION SECTION*/
-.investigation-section {
-  background-color: var(--bg-secondary);
-  padding: 6rem 6rem;
-  color: var(--text-main);
-  position: relative;
-  z-index: 1;
-}
-
-.investigation-wrapper {
-  display: grid;
-  grid-template-columns: 420px 1fr;
-  gap: 4rem;
-  align-items: flex-start;
-}
-
-.investigation-image {
-  height: 520px;
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: var(--shadow-md);
-}
-
-.investigation-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.investigation-image:hover {
-  border-color: var(--secondary-color);
-  box-shadow: var(--shadow-hover);
-}
-
-.investigation-image:hover img {
-  transform: scale(1.05);
-}
-
-.investigation-content h1 {
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: var(--secondary-color);
-  margin-bottom: 0.5rem;
-}
-
-.investigation-content h2 {
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: var(--text-main);
-  margin-bottom: 2rem;
-}
-
-.investigation-content ul {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  margin-bottom: 2.5rem;
-}
-
-.investigation-content li {
-  font-size: 0.95rem;
-  color: var(--text-main);
-  padding-left: 1.2rem;
-  position: relative;
-}
-
-.investigation-content li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--secondary-color);
-}
-
-.investigation-footer {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.investigation-footer span {
-  font-size: 0.9rem;
-  border-bottom: 1px solid var(--primary-color);
-  padding-bottom: 0.2rem;
-  color: var(--text-main);
-}
-
-.investigation-footer button {
-  background: linear-gradient(135deg, var(--secondary-color) 0%, #d4ad06 100%);
-  color: var(--text-light);
-  border: none;
-  padding: 0.7rem 1.6rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow-sm);
-  font-weight: 500;
-}
-
-.investigation-footer button:hover {
-  background: linear-gradient(135deg, #d4ad06 0%, #e0ba07 100%);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-/*BENEFITS SECTION*/
+/*BENEFITS SECTION - AHORA ANTES DE INVESTIGACIÓN*/
 .benefits-section {
   background-color: var(--bg-primary);
   padding: 6rem 6rem;
@@ -1104,6 +1083,23 @@ body.menu-open {
   transform: scale(1.05);
 }
 
+/*INVESTIGATION HERO SECTION */
+.investigation-hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 500px; /* Altura mínima para móviles */
+  background-color: var(--bg-primary);
+}
+
+/* LA IMAGEN */
+.investigation-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
 /*PROTECTION SECTION*/
 .protection-section {
   position: relative;
@@ -1111,6 +1107,7 @@ body.menu-open {
   background-size: 200% 200%;
   animation: gradientShift 15s ease infinite;
   display: flex;
+  margin-top: -3rem;
   padding: 5rem 6rem;
   gap: 4rem;
   min-height: 80vh;
@@ -1243,11 +1240,20 @@ body.menu-open {
   font-family: "Montserrat", sans-serif;
 }
 
+/*CONTACT SECTION*/
 .contact-section {
   position: relative;
-  background-color: var(--secondary-color);
   color: var(--text-main);
   padding: 4rem 6rem;
+  overflow: hidden;
+}
+
+.contact-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(125% 125% at 50% 90%, #ffffff 40%, #c39c05 100%);
 }
 
 .contact-section::after {
@@ -1260,9 +1266,12 @@ body.menu-open {
     transparent 60%
   );
   pointer-events: none;
+  z-index: 1;
 }
 
 .section-title {
+  position: relative;
+  z-index: 2;
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
@@ -1271,6 +1280,8 @@ body.menu-open {
 }
 
 .contact-container {
+  position: relative;
+  z-index: 2;
   max-width: 800px;
   margin: 0 auto;
   border: 1px solid var(--border-color);
@@ -1487,7 +1498,6 @@ body.menu-open {
   .risk-section,
   .brand-section,
   .process-section,
-  .investigation-section,
   .benefits-section,
   .protection-section,
   .stats-section {
@@ -1498,18 +1508,17 @@ body.menu-open {
   .process-cards {
     gap: 1.5rem;
   }
-  .investigation-wrapper {
-    grid-template-columns: 350px 1fr;
-  }
-  .investigation-image {
-    height: 420px;
-  }
   .benefits-wrapper {
     grid-template-columns: 1fr 350px;
   }
   .benefits-image {
     height: 350px;
   }
+
+  .investigation-hero-section {
+    min-height: 450px;
+  }
+
   .protection-sidebar {
     flex: 0 0 280px;
     padding-right: 2rem;
@@ -1524,6 +1533,9 @@ body.menu-open {
   }
   .contact-container {
     padding: 2.5rem;
+  }
+  .investigation-hero-section {
+    min-height: 500px;
   }
 }
 
@@ -1601,7 +1613,7 @@ body.menu-open {
     height: 3px;
   }
   .herosection {
-    min-height: 400px;
+    min-height: 500px;
   }
   .hero-content {
     padding: 0 2rem;
@@ -1626,7 +1638,6 @@ body.menu-open {
   }
   .brand-section,
   .process-section,
-  .investigation-section,
   .benefits-section {
     padding: 3rem 2rem;
   }
@@ -1635,30 +1646,9 @@ body.menu-open {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  .brand-card {
-    padding: 2rem 1.5rem 1.5rem;
-  }
+  .brand-card,
   .process-card {
     height: 280px;
-  }
-  .investigation-wrapper {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-  .investigation-image {
-    height: 300px;
-    order: -1;
-  }
-  .investigation-content h1 {
-    font-size: 2rem;
-  }
-  .investigation-footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-  .investigation-footer button {
-    width: 100%;
   }
   .benefits-wrapper {
     grid-template-columns: 1fr;
@@ -1670,6 +1660,11 @@ body.menu-open {
   .benefits-content button {
     width: 100%;
   }
+
+  .investigation-hero-section {
+    min-height: 400px;
+  }
+
   .protection-section {
     flex-direction: column;
     padding: 3rem 2rem;
@@ -1729,6 +1724,17 @@ body.menu-open {
     width: 45px;
     height: 45px;
   }
+
+  .investigation-hero-section {
+    min-height: 500px;
+  }
+
+  /* Resetear parallax en móvil */
+  .investigation-hero-img {
+    height: 100%;
+    top: 0;
+    transform: none !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1749,7 +1755,7 @@ body.menu-open {
     gap: 2rem;
   }
   .herosection {
-    min-height: 380px;
+    min-height: 450px;
     padding: 3rem 0;
   }
   .hero-content {
@@ -1769,7 +1775,6 @@ body.menu-open {
   .risk-section,
   .brand-section,
   .process-section,
-  .investigation-section,
   .benefits-section,
   .protection-section,
   .stats-section {
@@ -1779,13 +1784,11 @@ body.menu-open {
   .risk-content h1,
   .brand-header h1,
   .process-section h1,
-  .investigation-content h1,
   .benefits-content h1 {
     font-size: 1.6rem;
   }
   .risk-content h2,
   .brand-header h2,
-  .investigation-content h2,
   .benefits-content h2 {
     font-size: 1rem;
   }
@@ -1794,38 +1797,29 @@ body.menu-open {
     text-align: center;
     padding: 0.8rem 1.2rem;
   }
-  .brand-card {
-    padding: 1.8rem 1.2rem 1.2rem;
+  .brand-card,
+  .process-card {
+    height: 250px;
   }
-  .brand-card h3 {
-    font-size: 1.1rem;
+  .brand-card-content,
+  .card-content {
+    padding: 1.5rem;
   }
-  .brand-card p {
-    font-size: 0.9rem;
+  .brand-card h3,
+  .card-content h2 {
+    font-size: 1.2rem;
+  }
+  .brand-card p,
+  .card-content p {
+    font-size: 0.85rem;
   }
   .brand-footer {
     font-size: 1rem;
   }
-  .process-card {
-    height: 250px;
-  }
-  .card-content {
-    bottom: 1.5rem;
-    left: 1.5rem;
-    right: 1.5rem;
-  }
-  .card-content h2 {
-    font-size: 1.2rem;
-  }
-  .card-content p {
-    font-size: 0.85rem;
-  }
-  .investigation-content li,
   .benefits-content p,
   .benefits-content li {
     font-size: 0.85rem;
   }
-  .investigation-image,
   .benefits-image {
     height: 250px;
   }
@@ -1836,6 +1830,24 @@ body.menu-open {
     grid-template-columns: 1fr;
     gap: 1.2rem;
   }
+
+  .investigation-hero-section {
+    min-height: 500px;
+    /* Opción 1: Sin altura fija, la imagen define */
+    height: auto;
+  }
+
+  .investigation-hero-picture {
+    position: relative; /* Cambia a relative en desktop */
+    height: auto;
+  }
+
+  .investigation-hero-img {
+    position: relative;
+    height: auto;
+    min-height: 500px;
+  }
+
   .card-img-container {
     height: 200px;
   }
@@ -1908,6 +1920,23 @@ body.menu-open {
   .stat-label {
     font-size: 0.9rem;
   }
+
+  .investigation-hero-section {
+    min-height: 450px;
+  }
+
+  .investigation-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .investigation-hero-content p {
+    font-size: 1rem;
+  }
+
+  .investigation-hero-content button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 360px) {
@@ -1918,7 +1947,7 @@ body.menu-open {
     font-size: 1.2rem;
   }
   .herosection {
-    min-height: 360px;
+    min-height: 420px;
   }
   .hero-content h1 {
     font-size: 1.5rem;
@@ -1929,7 +1958,6 @@ body.menu-open {
   .risk-content h1,
   .brand-header h1,
   .process-section h1,
-  .investigation-content h1,
   .benefits-content h1 {
     font-size: 1.4rem;
   }
@@ -1942,5 +1970,9 @@ body.menu-open {
   }
   .footer-nav a {
     font-size: 0.7rem;
+  }
+
+  .investigation-hero-section {
+    min-height: 400px;
   }
 }
