@@ -129,16 +129,19 @@ const counterObserver = new IntersectionObserver(
         const updateCounter = () => {
           current += increment;
           if (current < target) {
-            counter.textContent = Math.floor(current);
+            counter.textContent = Math.floor(current).toLocaleString("en-US");
             requestAnimationFrame(updateCounter);
           } else {
-            counter.textContent = target;
-            // Add "+" suffix if needed
-            if (target >= 100 && !counter.textContent.includes("%")) {
-              counter.textContent = target + "+";
-            }
-            if (counter.textContent.includes("98")) {
-              counter.textContent = "98%";
+            counter.textContent = target.toLocaleString("en-US");
+            // Casos especiales
+            if (target === 1000) {
+              counter.textContent = "+1,000";
+            } else if (target === 40000000) {
+              counter.textContent = "$40,000,000";
+            } else if (target === 3) {
+              counter.textContent = "-3%";
+            } else if (target === 121) {
+              counter.textContent = "121";
             }
           }
         };
@@ -353,7 +356,7 @@ if ("IntersectionObserver" in window) {
 // CARD HOVER EFFECTS WITH 3D TILT
 // ================================
 const cards = document.querySelectorAll(
-  ".brand-card, .process-card, .protection-card"
+  ".process-card, .protection-card, .social-card"
 );
 
 cards.forEach((card) => {

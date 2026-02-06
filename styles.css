@@ -61,7 +61,6 @@ body {
 /* ==================================
    SCROLLBAR PERSONALIZADA
 ================================== */
-/* Para navegadores basados en Webkit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -79,7 +78,6 @@ body {
   background: #1a2545;
 }
 
-/* Para Firefox */
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--primary-color) #f1f1f1;
@@ -88,8 +86,6 @@ body {
 /* ==================================
    NUEVAS ANIMACIONES Y EFECTOS
 ================================== */
-
-/* Scroll Progress Indicator */
 .scroll-progress {
   position: fixed;
   top: 0;
@@ -102,7 +98,6 @@ body {
   transition: transform 0.1s ease-out;
 }
 
-/* Scroll Reveal Animations */
 [data-scroll-reveal] {
   opacity: 0;
   transform: translateY(50px);
@@ -126,7 +121,6 @@ body {
   transform: translateY(0) translateX(0);
 }
 
-/* Fade In Up Animation for Hero */
 .fade-in-up {
   animation: fadeInUp 1s ease-out forwards;
 }
@@ -142,13 +136,11 @@ body {
   }
 }
 
-/* Animate Text */
 .animate-text {
   animation: fadeInUp 1s ease-out forwards;
   opacity: 0;
 }
 
-/* Ripple Effect for Buttons */
 .btn-ripple {
   position: relative;
   overflow: hidden;
@@ -172,7 +164,6 @@ body {
   height: 300px;
 }
 
-/* List Item Animations */
 .list-item-animate {
   opacity: 0;
   transform: translateX(-20px);
@@ -184,7 +175,6 @@ body {
   transform: translateX(0);
 }
 
-/* Badge Animation */
 .badge-animate {
   display: inline-block;
   animation: pulse 2s ease-in-out infinite;
@@ -200,7 +190,6 @@ body {
   }
 }
 
-/* Floating Particles in Hero */
 .particles {
   position: absolute;
   inset: 0;
@@ -270,7 +259,6 @@ body {
   }
 }
 
-/* Scroll to Top Button */
 .scroll-to-top {
   position: fixed;
   bottom: 30px;
@@ -304,7 +292,6 @@ body {
   box-shadow: var(--shadow-hover);
 }
 
-/* Animated Gradient Backgrounds */
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -317,7 +304,6 @@ body {
   }
 }
 
-/* Form Input Animations */
 .form-input-animate {
   position: relative;
 }
@@ -335,12 +321,21 @@ body {
   }
 }
 
-/* Stats Section (NEW) */
+/* Stats Section */
 .stats-section {
   background: linear-gradient(135deg, var(--primary-color) 0%, #2a3d6a 100%);
-  padding: 4rem 6rem;
+  padding: 5rem 6rem;
   position: relative;
   overflow: hidden;
+}
+
+.stats-title {
+  text-align: center;
+  color: var(--secondary-color);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 700;
+  margin-bottom: 3rem;
+  line-height: 1.2;
 }
 
 .stats-section::before {
@@ -527,7 +522,7 @@ body.menu-open {
   overflow: hidden;
 }
 
-/*HERO SECTION - ACTUALIZADO CON PICTURE Y MAYOR HEIGHT*/
+/*HERO SECTION*/
 .herosection {
   position: relative;
   min-height: 650px;
@@ -538,7 +533,6 @@ body.menu-open {
   overflow: hidden;
 }
 
-/* Picture responsivo para HeroSection */
 .hero-picture {
   position: absolute;
   inset: 0;
@@ -672,13 +666,6 @@ body.menu-open {
   font-size: clamp(1.8rem, 2.5vw, 2.4rem);
   font-weight: 700;
   color: var(--secondary-color);
-  margin-bottom: 0.75rem;
-}
-
-.risk-content h2 {
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: #e5e7eb;
   margin-bottom: 2rem;
 }
 
@@ -724,167 +711,16 @@ body.menu-open {
 .risk-illustration {
   position: relative;
   z-index: 2;
-}
-
-.risk-illustration svg,
-.risk-illustration img {
-  max-width: 100%;
-  height: auto;
-  fill: var(--secondary-color);
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
-}
-
-/*BRAND SECTION - ACTUALIZADO CON ESTILO DE PROCESS CARDS*/
-.brand-section {
-  padding: 5rem 6rem;
-  background-color: var(--bg-secondary);
-}
-
-.brand-header {
-  max-width: 720px;
-  margin-bottom: 4rem;
-}
-
-.brand-header h1 {
-  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
-  font-weight: 700;
-  color: var(--secondary-color);
-  margin-bottom: 0.75rem;
-}
-
-.brand-header h2 {
-  font-size: 1.05rem;
-  font-weight: 400;
-  color: var(--text-main);
-}
-
-.brand-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-.brand-card {
-  position: relative;
-  height: 320px;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Picture responsivo para Brand Cards */
-.brand-card-picture {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-.brand-card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-.brand-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-hover);
-}
-
-.brand-card .card-accent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 6px;
-  width: 100%;
-  background-color: var(--secondary-color);
-  z-index: 3;
-}
-
-.card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(32, 47, 88, 0.2),
-    rgba(32, 47, 88, 0.75)
-  );
-  z-index: 1;
-  transition: background 0.3s ease;
-}
-
-.brand-card:hover .card-overlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(32, 47, 88, 0.1),
-    rgba(32, 47, 88, 0.65)
-  );
-}
-
-.brand-card-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  color: #ffffff;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.brand-card-logo {
-  width: 70px;
-  height: 70px;
-  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--primary-color) 0%, #2a3d6a 100%);
-  border-radius: 12px;
-  padding: 0.75rem;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s ease;
 }
 
-.brand-card:hover .brand-card-logo {
-  transform: scale(1.1) rotate(5deg);
+.risk-illustration img {
+  border-radius: 5px;
 }
 
-.brand-card-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.brand-card h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--secondary-color);
-}
-
-.brand-card p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  opacity: 0.95;
-}
-
-.brand-footer {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--secondary-color);
-}
-
-/*PROCESS SECTION - ACTUALIZADO CON PICTURE*/
+/*PROCESS SECTION*/
 .process-section {
   padding: 5rem 6rem;
   background-color: var(--bg-primary);
@@ -915,7 +751,6 @@ body.menu-open {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Picture responsivo para Process Cards */
 .process-card-picture {
   position: absolute;
   inset: 0;
@@ -955,6 +790,18 @@ body.menu-open {
   z-index: 3;
 }
 
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(32, 47, 88, 0.2),
+    rgba(32, 47, 88, 0.75)
+  );
+  z-index: 1;
+  transition: background 0.3s ease;
+}
+
 .card-content {
   position: absolute;
   bottom: 2rem;
@@ -976,7 +823,7 @@ body.menu-open {
   opacity: 0.95;
 }
 
-/*BENEFITS SECTION - AHORA ANTES DE INVESTIGACIÓN*/
+/*BENEFITS SECTION*/
 .benefits-section {
   background-color: var(--bg-primary);
   padding: 6rem 6rem;
@@ -1087,11 +934,10 @@ body.menu-open {
 .investigation-hero-section {
   position: relative;
   width: 100%;
-  min-height: 500px; /* Altura mínima para móviles */
+  min-height: 500px;
   background-color: var(--bg-primary);
 }
 
-/* LA IMAGEN */
 .investigation-hero-img {
   width: 100%;
   height: 100%;
@@ -1230,43 +1076,13 @@ body.menu-open {
   transform: scale(1.05);
 }
 
-/*CONTACT & FOOTER*/
-.contact-section,
-.advisor-section,
-.main-footer {
-  background-color: var(--bg-primary);
-  color: var(--text-main);
-  padding: 4rem 6rem;
-  font-family: "Montserrat", sans-serif;
-}
-
-/*CONTACT SECTION*/
+/*CONTACT SECTION - ACTUALIZADA CON IMAGEN A LA IZQUIERDA*/
 .contact-section {
-  position: relative;
+  background-color: var(--secondary-color);
   color: var(--text-main);
-  padding: 4rem 6rem;
+  padding: 5rem 6rem;
+  position: relative;
   overflow: hidden;
-}
-
-.contact-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: radial-gradient(125% 125% at 50% 90%, #ffffff 40%, #c39c05 100%);
-}
-
-.contact-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.12),
-    transparent 60%
-  );
-  pointer-events: none;
-  z-index: 1;
 }
 
 .section-title {
@@ -1282,13 +1098,34 @@ body.menu-open {
 .contact-container {
   position: relative;
   z-index: 2;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
-  border: 1px solid var(--border-color);
-  border-radius: 24px;
-  padding: 3rem;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 3rem;
   background-color: var(--bg-secondary);
-  box-shadow: var(--shadow-md);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-image {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+}
+
+.contact-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.contact-form {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group {
@@ -1354,6 +1191,12 @@ body.menu-open {
   box-shadow: var(--shadow-sm);
 }
 
+/* ADVISOR SECTION */
+.advisor-section {
+  background-color: var(--bg-primary);
+  padding: 4rem 6rem;
+}
+
 .divider {
   border: 0;
   border-top: 1px solid var(--border-color);
@@ -1386,6 +1229,168 @@ body.menu-open {
   box-shadow: var(--shadow-md);
 }
 
+/* SOCIAL NETWORKS SECTION - NUEVA */
+.social-networks-section {
+  background-color: var(--bg-primary);
+  padding: 6rem 6rem;
+  position: relative;
+}
+
+.social-networks-container {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.social-networks-brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand-logo-box {
+  width: 180px;
+  margin: 0 auto;
+}
+
+.brand-logo-box img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.social-networks-brand h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.social-networks-brand h2 {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-main);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.location-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.location-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.location-card:hover {
+  border-color: var(--secondary-color);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.location-card h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+.location-card p {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.social-card {
+  background-color: var(--bg-secondary);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.social-card.primary {
+  border-color: var(--primary-color);
+}
+
+.social-card.secondary {
+  border-color: var(--secondary-color);
+}
+
+.social-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+.social-card.primary:hover {
+  background: linear-gradient(135deg, rgba(32, 47, 88, 0.05), transparent);
+}
+
+.social-card.secondary:hover {
+  background: linear-gradient(135deg, rgba(195, 156, 5, 0.05), transparent);
+}
+
+.social-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg-primary);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  padding: 18px;
+}
+
+.social-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.social-icon.primary-bg {
+  background-color: var(--primary-color);
+}
+
+.social-icon.secondary-bg {
+  background-color: var(--secondary-color);
+}
+
+.social-card:hover .social-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.social-card h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0;
+}
+
+/* FOOTER */
 .main-footer {
   background-color: var(--bg-primary);
   padding: 4rem 2rem;
@@ -1430,7 +1435,7 @@ body.menu-open {
 .footer-nav a {
   color: var(--text-main);
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 300;
   transition: color 0.3s ease;
   white-space: nowrap;
@@ -1496,15 +1501,16 @@ body.menu-open {
     font-size: clamp(2rem, 4vw, 3rem);
   }
   .risk-section,
-  .brand-section,
   .process-section,
   .benefits-section,
   .protection-section,
-  .stats-section {
+  .stats-section,
+  .contact-section,
+  .advisor-section,
+  .social-networks-section {
     padding: 4rem 3rem;
     gap: 3rem;
   }
-  .brand-cards,
   .process-cards {
     gap: 1.5rem;
   }
@@ -1514,11 +1520,9 @@ body.menu-open {
   .benefits-image {
     height: 350px;
   }
-
   .investigation-hero-section {
     min-height: 450px;
   }
-
   .protection-sidebar {
     flex: 0 0 280px;
     padding-right: 2rem;
@@ -1526,16 +1530,19 @@ body.menu-open {
   .logo-box {
     width: 100%;
   }
-  .contact-section,
-  .advisor-section,
-  .main-footer {
-    padding: 4rem 3rem;
-  }
   .contact-container {
+    grid-template-columns: 350px 1fr;
+    gap: 2rem;
+  }
+  .contact-image {
+    min-height: 450px;
+  }
+  .contact-form {
     padding: 2.5rem;
   }
-  .investigation-hero-section {
-    min-height: 500px;
+  .social-networks-container {
+    grid-template-columns: 350px 1fr;
+    gap: 3rem;
   }
 }
 
@@ -1543,6 +1550,11 @@ body.menu-open {
   .stats-container {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .stats-title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
   }
 
   .stat-number {
@@ -1561,7 +1573,6 @@ body.menu-open {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: var(--primary-color);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -1600,9 +1611,6 @@ body.menu-open {
   .navbar-menu.active li:nth-child(5) {
     transition-delay: 0.3s;
   }
-  .navbar-menu.active li:nth-child(6) {
-    transition-delay: 0.35s;
-  }
   .navbar-menu a {
     font-size: 1.5rem;
     font-weight: 300;
@@ -1636,17 +1644,14 @@ body.menu-open {
     max-width: 400px;
     margin: 0 auto;
   }
-  .brand-section,
   .process-section,
   .benefits-section {
     padding: 3rem 2rem;
   }
-  .brand-cards,
   .process-cards {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  .brand-card,
   .process-card {
     height: 280px;
   }
@@ -1660,11 +1665,9 @@ body.menu-open {
   .benefits-content button {
     width: 100%;
   }
-
   .investigation-hero-section {
     min-height: 400px;
   }
-
   .protection-section {
     flex-direction: column;
     padding: 3rem 2rem;
@@ -1677,7 +1680,6 @@ body.menu-open {
     padding-right: 0;
     padding-bottom: 2rem;
   }
-
   .protection-title {
     margin-bottom: 1rem;
   }
@@ -1690,14 +1692,28 @@ body.menu-open {
   }
   .contact-section,
   .advisor-section,
-  .main-footer {
+  .social-networks-section {
     padding: 3rem 2rem;
   }
   .section-title {
     font-size: 2rem;
   }
   .contact-container {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .contact-image {
+    min-height: 300px;
+  }
+  .contact-form {
     padding: 2rem;
+  }
+  .social-networks-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .social-grid {
+    grid-template-columns: 1fr;
   }
   .footer-bar {
     padding: 1.5rem 2rem;
@@ -1717,23 +1733,11 @@ body.menu-open {
     width: 36px;
     height: 36px;
   }
-
   .scroll-to-top {
     bottom: 20px;
     right: 20px;
     width: 45px;
     height: 45px;
-  }
-
-  .investigation-hero-section {
-    min-height: 500px;
-  }
-
-  /* Resetear parallax en móvil */
-  .investigation-hero-img {
-    height: 100%;
-    top: 0;
-    transform: none !important;
   }
 }
 
@@ -1773,48 +1777,40 @@ body.menu-open {
     font-size: 0.95rem;
   }
   .risk-section,
-  .brand-section,
   .process-section,
   .benefits-section,
   .protection-section,
-  .stats-section {
+  .stats-section,
+  .contact-section,
+  .advisor-section,
+  .social-networks-section {
     padding: 2.5rem 1.5rem;
     gap: 2rem;
   }
+  .stats-title {
+    font-size: 1.5rem;
+  }
   .risk-content h1,
-  .brand-header h1,
   .process-section h1,
   .benefits-content h1 {
     font-size: 1.6rem;
-  }
-  .risk-content h2,
-  .brand-header h2,
-  .benefits-content h2 {
-    font-size: 1rem;
   }
   .risk-btn {
     width: 100%;
     text-align: center;
     padding: 0.8rem 1.2rem;
   }
-  .brand-card,
   .process-card {
     height: 250px;
   }
-  .brand-card-content,
   .card-content {
     padding: 1.5rem;
   }
-  .brand-card h3,
   .card-content h2 {
     font-size: 1.2rem;
   }
-  .brand-card p,
   .card-content p {
     font-size: 0.85rem;
-  }
-  .brand-footer {
-    font-size: 1rem;
   }
   .benefits-content p,
   .benefits-content li {
@@ -1830,24 +1826,19 @@ body.menu-open {
     grid-template-columns: 1fr;
     gap: 1.2rem;
   }
-
   .investigation-hero-section {
     min-height: 500px;
-    /* Opción 1: Sin altura fija, la imagen define */
     height: auto;
   }
-
   .investigation-hero-picture {
-    position: relative; /* Cambia a relative en desktop */
+    position: relative;
     height: auto;
   }
-
   .investigation-hero-img {
     position: relative;
     height: auto;
     min-height: 500px;
   }
-
   .card-img-container {
     height: 200px;
   }
@@ -1859,18 +1850,18 @@ body.menu-open {
     padding: 2rem 1rem;
     font-size: 0.85rem;
   }
-  .contact-section,
-  .advisor-section,
-  .main-footer {
-    padding: 2.5rem 1.5rem;
-  }
   .section-title {
     font-size: 1.8rem;
     margin-bottom: 2rem;
   }
   .contact-container {
-    padding: 1.5rem;
     border-radius: 15px;
+  }
+  .contact-image {
+    min-height: 250px;
+  }
+  .contact-form {
+    padding: 1.5rem;
   }
   .form-group {
     margin-bottom: 1.2rem;
@@ -1912,30 +1903,11 @@ body.menu-open {
     width: 34px;
     height: 34px;
   }
-
   .stat-number {
     font-size: 2.5rem;
   }
-
   .stat-label {
     font-size: 0.9rem;
-  }
-
-  .investigation-hero-section {
-    min-height: 450px;
-  }
-
-  .investigation-hero-content h1 {
-    font-size: 2rem;
-  }
-
-  .investigation-hero-content p {
-    font-size: 1rem;
-  }
-
-  .investigation-hero-content button {
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
   }
 }
 
@@ -1956,7 +1928,6 @@ body.menu-open {
     font-size: 0.9rem;
   }
   .risk-content h1,
-  .brand-header h1,
   .process-section h1,
   .benefits-content h1 {
     font-size: 1.4rem;
@@ -1971,7 +1942,6 @@ body.menu-open {
   .footer-nav a {
     font-size: 0.7rem;
   }
-
   .investigation-hero-section {
     min-height: 400px;
   }
