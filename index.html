@@ -1,16 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="description"
+      content="Rentaval - Blindaje legal en arrendamientos. Investigamos, estructuramos y respaldamos arrendamientos para proteger tu inmueble, tu renta y tu tranquilidad."
+    />
+    <meta
+      name="keywords"
+      content="arrendamiento, protección legal, contratos, investigación, asesores inmobiliarios"
+    />
+
+    <!-- Security Headers -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com;"
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta
+      http-equiv="Referrer-Policy"
+      content="strict-origin-when-cross-origin"
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <title>Rentaval Website</title>
+    <title>Rentaval | Blindaje legal en arrendamientos</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -25,7 +46,11 @@
         </div>
 
         <!-- Menú hamburguesa -->
-        <button class="hamburger" id="hamburger" aria-label="Menú">
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Menú de navegación"
+        >
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
@@ -37,7 +62,15 @@
           <li><a href="#investigacion" class="nav-link">Investigación</a></li>
           <li><a href="#asesores" class="nav-link">Asesores</a></li>
           <li><a href="#contacto" class="nav-link">Contáctanos</a></li>
-          <li><a href="#portal" class="nav-link">Portal</a></li>
+          <li>
+            <a
+              href="https://mango-ground-007a7080f.2.azurestaticapps.net/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="nav-link"
+              >Portal</a
+            >
+          </li>
         </ul>
       </div>
     </nav>
@@ -57,6 +90,7 @@
           src="./assets/Desktop-img/HeroSection-Desktop.jpg"
           alt="Blindaje legal en arrendamientos"
           class="hero-img"
+          loading="eager"
         />
       </picture>
 
@@ -69,10 +103,16 @@
         </h2>
 
         <div class="hero-buttons" style="animation-delay: 0.4s">
-          <button class="btn-primary btn-ripple">
+          <button
+            class="btn-primary btn-ripple"
+            onclick="window.location.href='#contacto'"
+          >
             Quiero proteger mi renta
           </button>
-          <button class="btn-secondary btn-ripple">
+          <button
+            class="btn-secondary btn-ripple"
+            onclick="window.location.href='#asesores'"
+          >
             Soy asesor inmobiliario
           </button>
         </div>
@@ -90,9 +130,9 @@
 
     <!-- Stats Section -->
     <section class="stats-section">
-      <h1 class="stats-title" data-scroll-reveal>
+      <h2 class="stats-title" data-scroll-reveal>
         Arriesgar sin protección es un riesgo innecesario
-      </h1>
+      </h2>
       <div class="stats-container">
         <div class="stat-item" data-scroll-reveal>
           <div class="stat-number" data-count="1000">0</div>
@@ -115,7 +155,7 @@
 
     <section class="risk-section">
       <div class="risk-content" data-scroll-reveal>
-        <h1>Póliza Jurídica en arrendamiento incluye</h1>
+        <h2>Póliza Jurídica en arrendamiento incluye</h2>
 
         <ul class="risk-list">
           <li data-scroll-reveal style="transition-delay: 0.1s">
@@ -147,7 +187,11 @@
           </li>
         </ul>
 
-        <button class="risk-btn btn-ripple" data-scroll-reveal>
+        <button
+          class="risk-btn btn-ripple"
+          data-scroll-reveal
+          onclick="window.location.href='#contacto'"
+        >
           Póliza jurídica de arrendamiento
         </button>
       </div>
@@ -156,12 +200,13 @@
         <img
           src="./assets/Desktop-img/OurBrand_Service-Desktop.jpg"
           alt="Ilustración de protección inmobiliaria"
+          loading="lazy"
         />
       </div>
     </section>
 
     <section class="process-section">
-      <h1 data-scroll-reveal>¿Cómo trabajamos?</h1>
+      <h2 data-scroll-reveal>¿Cómo trabajamos?</h2>
 
       <div class="process-cards">
         <div
@@ -183,13 +228,14 @@
               src="./assets/Desktop-img/Process_Investigation-Desktop.jpg"
               alt="Investigación de arrendatarios"
               class="process-card-img"
+              loading="lazy"
             />
           </picture>
           <span class="card-accent"></span>
           <div class="card-overlay"></div>
 
           <div class="card-content">
-            <h2>Investigación</h2>
+            <h3>Investigación</h3>
             <p>Analizamos a fondo el perfil del arrendatario y su historial.</p>
           </div>
         </div>
@@ -213,13 +259,14 @@
               src="./assets/Desktop-img/Process_Contract-Desktop.jpg"
               alt="Redacción de contratos"
               class="process-card-img"
+              loading="lazy"
             />
           </picture>
           <span class="card-accent"></span>
           <div class="card-overlay"></div>
 
           <div class="card-content">
-            <h2>Redacción</h2>
+            <h3>Redacción</h3>
             <p>Elaboramos contratos jurídicamente sólidos y actualizados.</p>
           </div>
         </div>
@@ -243,13 +290,14 @@
               src="./assets/Desktop-img/Process_LegalSupport-Desktop.jpg"
               alt="Protección legal"
               class="process-card-img"
+              loading="lazy"
             />
           </picture>
           <span class="card-accent"></span>
           <div class="card-overlay"></div>
 
           <div class="card-content">
-            <h2>Protección</h2>
+            <h3>Protección</h3>
             <p>Te respaldamos legalmente durante toda la vigencia.</p>
           </div>
         </div>
@@ -260,15 +308,15 @@
     <section class="benefits-section" id="asesores">
       <div class="benefits-wrapper">
         <div class="benefits-content" data-scroll-reveal="left">
-          <h1>Soy asesor inmobiliario</h1>
-          <h2>Rentaval no compite contigo, te respalda</h2>
+          <h2>Soy asesor inmobiliario</h2>
+          <h3>Rentaval no compite contigo, te respalda</h3>
 
           <p>
             Trabajar con Rentaval te permite ofrecer a tus clientes seguridad,
             prevención y respaldo jurídico, elevando tu nivel profesional.
           </p>
 
-          <h3>Beneficios</h3>
+          <h4>Beneficios</h4>
           <ul>
             <li class="list-item-animate" style="transition-delay: 0.1s">
               Comisión por pólizas colocadas
@@ -290,13 +338,16 @@
             </li>
           </ul>
 
-          <button class="btn-ripple">Quiero ser asesor aliado</button>
+          <button class="btn-ripple" onclick="window.location.href='#contacto'">
+            Quiero ser asesor aliado
+          </button>
         </div>
 
         <div class="benefits-image" data-scroll-reveal="right">
           <img
             src="./assets/RealEstateAdvisor.jpg"
             alt="Hombre de negocios cerrando un trato satisfactoriamente"
+            loading="lazy"
           />
         </div>
       </div>
@@ -328,6 +379,7 @@
           src="./assets/Desktop-img/Investigation_Horizontal-Desktop.png"
           alt="Investigación Persona Física Rentaval"
           class="investigation-hero-img"
+          loading="lazy"
         />
       </picture>
 
@@ -336,15 +388,19 @@
 
     <section class="protection-section" id="portal">
       <div class="protection-sidebar" data-scroll-reveal="left">
-        <h1 class="protection-title">
+        <h2 class="protection-title">
           Algunos tipos de protección inmobiliaria.
-        </h1>
+        </h2>
         <div class="protection-logo-container">
           <div class="logo-box">
-            <img src="./assets/LogoRentavalBlanco.png" alt="Logo Rentaval" />
+            <img
+              src="./assets/LogoRentavalBlanco.png"
+              alt="Logo Rentaval"
+              loading="lazy"
+            />
           </div>
-          <h2>RENTAVAL</h2>
-          <h3>TU RENTA SEGURA</h3>
+          <p class="logo-text-main">RENTAVAL</p>
+          <p class="logo-text-sub">TU RENTA SEGURA</p>
         </div>
       </div>
 
@@ -355,9 +411,13 @@
           style="transition-delay: 0.1s"
         >
           <div class="card-img-container">
-            <img src="./assets/house.jpg" alt="Casa habitación" />
+            <img
+              src="./assets/house.jpg"
+              alt="Casa habitación"
+              loading="lazy"
+            />
           </div>
-          <h2 class="card-label">Casa habitación</h2>
+          <h3 class="card-label">Casa habitación</h3>
         </div>
 
         <div
@@ -366,9 +426,13 @@
           style="transition-delay: 0.15s"
         >
           <div class="card-img-container">
-            <img src="./assets/Departments.jpg" alt="Departamento" />
+            <img
+              src="./assets/Departments.jpg"
+              alt="Departamento"
+              loading="lazy"
+            />
           </div>
-          <h2 class="card-label">Departamento</h2>
+          <h3 class="card-label">Departamento</h3>
         </div>
 
         <div
@@ -377,9 +441,13 @@
           style="transition-delay: 0.2s"
         >
           <div class="card-img-container">
-            <img src="./assets/commercial_premises.jpg" alt="Local" />
+            <img
+              src="./assets/commercial_premises.jpg"
+              alt="Local"
+              loading="lazy"
+            />
           </div>
-          <h2 class="card-label">Local</h2>
+          <h3 class="card-label">Local</h3>
         </div>
 
         <div
@@ -388,9 +456,9 @@
           style="transition-delay: 0.25s"
         >
           <div class="card-img-container">
-            <img src="./assets/store.jpg" alt="Almacén" />
+            <img src="./assets/store.jpg" alt="Almacén" loading="lazy" />
           </div>
-          <h2 class="card-label">Almacén</h2>
+          <h3 class="card-label">Almacén</h3>
         </div>
 
         <div
@@ -399,9 +467,9 @@
           style="transition-delay: 0.3s"
         >
           <div class="card-img-container">
-            <img src="./assets/office.jpg" alt="Oficina" />
+            <img src="./assets/office.jpg" alt="Oficina" loading="lazy" />
           </div>
-          <h2 class="card-label">Oficina</h2>
+          <h3 class="card-label">Oficina</h3>
         </div>
 
         <div
@@ -410,61 +478,119 @@
           style="transition-delay: 0.35s"
         >
           <div class="card-img-container">
-            <img src="./assets/Airbnb.jpg" alt="Airbnb" />
+            <img src="./assets/Airbnb.jpg" alt="Airbnb" loading="lazy" />
           </div>
-          <h2 class="card-label">Airb&b</h2>
+          <h3 class="card-label">Airb&amp;b</h3>
         </div>
       </div>
     </section>
 
     <section class="contact-section" id="contacto">
-      <h1 class="section-title" data-scroll-reveal>Contáctanos</h1>
+      <h2 class="section-title" data-scroll-reveal>Contáctanos</h2>
 
       <div class="contact-container" data-scroll-reveal>
         <div class="contact-image">
-          <img src="./assets/RealEstateAdvisor.jpg" alt="Asesor de Rentaval" />
+          <img
+            src="./assets/RealEstateAdvisor.jpg"
+            alt="Asesor de Rentaval"
+            loading="lazy"
+          />
         </div>
 
-        <form class="contact-form">
+        <form class="contact-form" id="contactForm" novalidate>
+          <!-- Web3Forms Access Key - REEMPLAZA CON TU CLAVE -->
+          <input
+            type="hidden"
+            name="access_key"
+            value="a757d0b6-3f22-40c8-b523-1db7c97e645a"
+          />
+
+          <!-- Campo honeypot para protección contra bots -->
+          <input
+            type="checkbox"
+            name="botcheck"
+            class="hidden"
+            style="display: none"
+          />
+
+          <!-- Campos personalizados de Web3Forms -->
+          <input
+            type="hidden"
+            name="subject"
+            value="Nuevo contacto desde Rentaval"
+          />
+          <input type="hidden" name="from_name" value="Formulario Rentaval" />
+
           <div class="form-group">
-            <label>Correo</label>
+            <label for="email">Correo <span class="required">*</span></label>
             <input
               type="email"
+              id="email"
+              name="email"
               class="form-input-animate"
               placeholder="tu@email.com"
+              required
+              autocomplete="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             />
+            <span class="error-message" id="email-error"></span>
           </div>
           <div class="form-group">
-            <label>Número</label>
+            <label for="phone">Número <span class="required">*</span></label>
             <input
-              type="text"
+              type="tel"
+              id="phone"
+              name="phone"
               class="form-input-animate"
               placeholder="81 1234 5678"
+              required
+              autocomplete="tel"
+              pattern="[0-9\s\-\+\(\)]{8,}"
             />
+            <span class="error-message" id="phone-error"></span>
           </div>
           <div class="form-group">
-            <label>Ciudad</label>
+            <label for="city">Ciudad <span class="required">*</span></label>
             <input
               type="text"
+              id="city"
+              name="city"
               class="form-input-animate"
               placeholder="Monterrey"
+              required
+              autocomplete="address-level2"
+              minlength="2"
+              maxlength="100"
             />
+            <span class="error-message" id="city-error"></span>
           </div>
           <div class="form-group">
-            <label>Servicio</label>
+            <label for="service"
+              >Servicio <span class="required">*</span></label
+            >
             <input
               type="text"
+              id="service"
+              name="service"
               class="form-input-animate"
               placeholder="Servicio de interés"
+              required
+              minlength="3"
+              maxlength="200"
             />
+            <span class="error-message" id="service-error"></span>
           </div>
           <div class="form-group">
-            <label>Monto mensual de renta</label>
+            <label for="amount">Monto mensual de renta</label>
             <input
               type="text"
+              id="amount"
+              name="amount"
               class="form-input-animate"
               placeholder="$0,000"
+              autocomplete="off"
             />
+            <span class="error-message" id="amount-error"></span>
           </div>
           <button type="submit" class="btn-send btn-ripple">Enviar</button>
         </form>
@@ -478,7 +604,12 @@
           ¿Quieres un acercamiento más humano?<br />
           Contacta con un asesor dando click al siguiente botón.
         </p>
-        <button class="btn-advisor btn-ripple">Contacta a un asesor</button>
+        <button
+          class="btn-advisor btn-ripple"
+          onclick="window.location.href='#contacto'"
+        >
+          Contacta a un asesor
+        </button>
       </div>
     </section>
 
@@ -488,10 +619,14 @@
         <!-- Logo y Info -->
         <div class="social-networks-brand" data-scroll-reveal="left">
           <div class="brand-logo-box">
-            <img src="./assets/LogoRentavalAmarillo.png" alt="Logo Rentaval" />
+            <img
+              src="./assets/LogoRentavalAmarillo.png"
+              alt="Logo Rentaval"
+              loading="lazy"
+            />
           </div>
-          <h1>RENTAVAL</h1>
-          <h2>TU RENTA SEGURA</h2>
+          <p class="brand-name">RENTAVAL</p>
+          <p class="brand-tagline">TU RENTA SEGURA</p>
 
           <div class="location-cards">
             <div
@@ -499,7 +634,7 @@
               data-scroll-reveal
               style="transition-delay: 0.1s"
             >
-              <h2>Monterrey</h2>
+              <h3>Monterrey</h3>
               <p>Insurgentes 4001 Col. San Jerónimo Monterrey Nuevo León</p>
             </div>
             <div
@@ -507,7 +642,7 @@
               data-scroll-reveal
               style="transition-delay: 0.2s"
             >
-              <h2>Cancún</h2>
+              <h3>Cancún</h3>
               <p>Insurgentes 4001 Col. San Jerónimo Monterrey Nuevo León</p>
             </div>
           </div>
@@ -515,90 +650,142 @@
 
         <!-- Grid de Redes Sociales -->
         <div class="social-grid">
-          <div
+          <a
+            href="mailto:servicioalcliente@rentaval.mx"
             class="social-card secondary"
             data-scroll-reveal
             style="transition-delay: 0.1s"
+            aria-label="Enviar correo electrónico"
           >
             <div class="social-icon secondary-bg">
-              <img src="./assets/Social-icon/Email.png" alt="Email" />
+              <img
+                src="./assets/Social-icon/Email.png"
+                alt="Email"
+                loading="lazy"
+              />
             </div>
-            <h2>Email</h2>
-          </div>
+            <p class="social-label">Email</p>
+          </a>
 
-          <div
+          <a
+            href="tel:+528126136418"
             class="social-card primary"
             data-scroll-reveal
             style="transition-delay: 0.15s"
+            aria-label="Llamar por teléfono"
           >
             <div class="social-icon primary-bg">
-              <img src="./assets/Social-icon/Phone.png" alt="Teléfonos" />
+              <img
+                src="./assets/Social-icon/Phone.png"
+                alt="Teléfonos"
+                loading="lazy"
+              />
             </div>
-            <h2>Teléfonos</h2>
-          </div>
+            <p class="social-label">Teléfonos</p>
+          </a>
 
-          <div
+          <a
+            href="https://wa.me/8126136418"
+            target="_blank"
+            rel="noopener noreferrer"
             class="social-card primary"
             data-scroll-reveal
             style="transition-delay: 0.2s"
+            aria-label="Contactar por WhatsApp"
           >
             <div class="social-icon primary-bg">
-              <img src="./assets/Social-icon/Whatsapp.png" alt="WhatsApp" />
+              <img
+                src="./assets/Social-icon/Whatsapp.png"
+                alt="WhatsApp"
+                loading="lazy"
+              />
             </div>
-            <h2>WhatsApp</h2>
-          </div>
+            <p class="social-label">WhatsApp</p>
+          </a>
 
-          <div
+          <a
+            href="https://www.instagram.com/rentavalmexico"
+            target="_blank"
+            rel="noopener noreferrer"
             class="social-card secondary"
             data-scroll-reveal
             style="transition-delay: 0.25s"
+            aria-label="Seguir en Instagram"
           >
             <div class="social-icon secondary-bg">
-              <img src="./assets/Social-icon/Instagram.png" alt="Instagram" />
+              <img
+                src="./assets/Social-icon/Instagram.png"
+                alt="Instagram"
+                loading="lazy"
+              />
             </div>
-            <h2>Instagram</h2>
-          </div>
+            <p class="social-label">Instagram</p>
+          </a>
 
-          <div
+          <a
+            href="https://www.facebook.com/RentavalMx"
+            target="_blank"
+            rel="noopener noreferrer"
             class="social-card secondary"
             data-scroll-reveal
             style="transition-delay: 0.3s"
+            aria-label="Seguir en Facebook"
           >
             <div class="social-icon secondary-bg">
-              <img src="./assets/Social-icon/Facebook.png" alt="Facebook" />
+              <img
+                src="./assets/Social-icon/Facebook.png"
+                alt="Facebook"
+                loading="lazy"
+              />
             </div>
-            <h2>Facebook</h2>
-          </div>
+            <p class="social-label">Facebook</p>
+          </a>
 
-          <div
+          <a
+            href="https://www.tiktok.com/@turentasegura"
+            target="_blank"
+            rel="noopener noreferrer"
             class="social-card primary"
             data-scroll-reveal
             style="transition-delay: 0.35s"
+            aria-label="Seguir en TikTok"
           >
             <div class="social-icon primary-bg">
-              <img src="./assets/Social-icon/TikTok.png" alt="TikTok" />
+              <img
+                src="./assets/Social-icon/TikTok.png"
+                alt="TikTok"
+                loading="lazy"
+              />
             </div>
-            <h2>TikTok</h2>
-          </div>
+            <p class="social-label">TikTok</p>
+          </a>
         </div>
       </div>
     </section>
 
     <footer class="main-footer">
       <div class="footer-bar" data-scroll-reveal>
-        <nav class="footer-nav">
+        <nav class="footer-nav" aria-label="Navegación del pie de página">
           <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Investigación</a></li>
-            <li><a href="#">Asesor</a></li>
-            <li><a href="#">Contactanos</a></li>
-            <li><a href="#">Portal</a></li>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#investigacion">Investigación</a></li>
+            <li><a href="#asesores">Asesor</a></li>
+            <li><a href="#contacto">Contáctanos</a></li>
+            <li>
+              <a
+                href="https://mango-ground-007a7080f.2.azurestaticapps.net/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Portal</a
+              >
+            </li>
           </ul>
         </nav>
+      </div>
     </footer>
 
     <!-- Scroll to top button -->
-    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Volver arriba">
       <svg
         width="24"
         height="24"
@@ -606,6 +793,7 @@
         fill="none"
         stroke="currentColor"
         stroke-width="2"
+        aria-hidden="true"
       >
         <polyline points="18 15 12 9 6 15"></polyline>
       </svg>

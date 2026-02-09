@@ -12,6 +12,8 @@
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
   --shadow-hover: 0 12px 32px rgba(195, 156, 5, 0.2);
+  --error-color: #dc2626;
+  --success-color: #16a34a;
 }
 
 /* 2. RESET CSS */
@@ -50,7 +52,7 @@ a {
 
 /* 3. ESTILOS BASE */
 body {
-  font-family: "Montserrat", serif;
+  font-family: "Montserrat", sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-main);
   line-height: 1.6;
@@ -431,6 +433,7 @@ body {
   display: flex;
   align-items: center;
   transition: transform 0.3s ease;
+  z-index: 1001;
 }
 
 .navbar-logo:hover {
@@ -662,7 +665,7 @@ body.menu-open {
   z-index: 2;
 }
 
-.risk-content h1 {
+.risk-content h2 {
   font-size: clamp(1.8rem, 2.5vw, 2.4rem);
   font-weight: 700;
   color: var(--secondary-color);
@@ -728,7 +731,7 @@ body.menu-open {
   z-index: 1;
 }
 
-.process-section h1 {
+.process-section h2 {
   font-size: clamp(1.8rem, 2.5vw, 2.4rem);
   font-weight: 700;
   color: var(--secondary-color);
@@ -811,7 +814,7 @@ body.menu-open {
   color: #ffffff;
 }
 
-.card-content h2 {
+.card-content h3 {
   font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -839,14 +842,14 @@ body.menu-open {
   align-items: center;
 }
 
-.benefits-content h1 {
+.benefits-content h2 {
   font-size: 2.2rem;
   font-weight: 700;
   color: var(--secondary-color);
   margin-bottom: 0.5rem;
 }
 
-.benefits-content h2 {
+.benefits-content h3 {
   font-size: 1.1rem;
   font-weight: 400;
   color: var(--text-main);
@@ -860,9 +863,10 @@ body.menu-open {
   max-width: 520px;
 }
 
-.benefits-content h3 {
+.benefits-content h4 {
   margin-bottom: 1rem;
   color: var(--secondary-color);
+  font-weight: 600;
 }
 
 .benefits-content ul {
@@ -1010,16 +1014,18 @@ body.menu-open {
   max-height: 80px;
 }
 
-.protection-logo-container h2 {
+.protection-logo-container .logo-text-main {
   font-size: 42px;
   font-weight: 200;
   text-align: center;
+  margin: 0;
 }
 
-.protection-logo-container h3 {
+.protection-logo-container .logo-text-sub {
   font-size: 16px;
   font-weight: 100;
   text-align: center;
+  margin: 0;
 }
 
 .protection-grid {
@@ -1038,7 +1044,6 @@ body.menu-open {
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: var(--shadow-sm);
 }
 
 .card-img-container {
@@ -1141,6 +1146,10 @@ body.menu-open {
   padding-left: 5px;
 }
 
+.required {
+  color: var(--error-color);
+}
+
 .form-group input {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -1150,6 +1159,26 @@ body.menu-open {
   outline: none;
   transition: all 0.3s ease;
   font-size: 0.95rem;
+}
+
+.form-group input.error {
+  border-color: var(--error-color);
+}
+
+.form-group input.success {
+  border-color: var(--success-color);
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  padding-left: 5px;
+  display: none;
+}
+
+.error-message.visible {
+  display: block;
 }
 
 .form-group input:hover {
@@ -1180,7 +1209,7 @@ body.menu-open {
   box-shadow: var(--shadow-sm);
 }
 
-.btn-send:hover {
+.btn-send:hover:not(:disabled) {
   background: linear-gradient(135deg, #d4ad06 0%, #e0ba07 100%);
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
@@ -1189,6 +1218,11 @@ body.menu-open {
 .btn-send:active {
   transform: translateY(0);
   box-shadow: var(--shadow-sm);
+}
+
+.btn-send:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* ADVISOR SECTION */
@@ -1261,15 +1295,16 @@ body.menu-open {
   object-fit: contain;
 }
 
-.social-networks-brand h1 {
+.brand-name {
   font-size: 3rem;
   font-weight: 700;
   color: var(--text-main);
   text-align: center;
   letter-spacing: 2px;
+  margin: 0;
 }
 
-.social-networks-brand h2 {
+.brand-tagline {
   font-size: 1rem;
   font-weight: 300;
   color: var(--text-main);
@@ -1298,7 +1333,7 @@ body.menu-open {
   transform: translateY(-4px);
 }
 
-.location-card h2 {
+.location-card h3 {
   font-size: 1.3rem;
   font-weight: 600;
   color: var(--secondary-color);
@@ -1309,6 +1344,7 @@ body.menu-open {
   font-size: 0.9rem;
   color: var(--text-main);
   line-height: 1.5;
+  margin: 0;
 }
 
 .social-grid {
@@ -1330,6 +1366,7 @@ body.menu-open {
   box-shadow: var(--shadow-md);
   border: 2px solid transparent;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .social-card.primary {
@@ -1383,7 +1420,7 @@ body.menu-open {
   transform: scale(1.1) rotate(5deg);
 }
 
-.social-card h2 {
+.social-label {
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--text-main);
@@ -1443,39 +1480,6 @@ body.menu-open {
 
 .footer-nav a:hover {
   color: var(--secondary-color);
-}
-
-.footer-socials {
-  display: flex;
-  gap: 1.2rem;
-  align-items: center;
-}
-
-.social-link {
-  display: block;
-  width: 40px;
-  height: 40px;
-  transition: all 0.3s ease;
-}
-
-.social-link img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  transition: all 0.3s ease;
-  opacity: 0.7;
-}
-
-.social-link:hover {
-  transform: translateY(-3px) rotate(5deg);
-}
-
-.social-link:hover img {
-  opacity: 1;
-  filter: brightness(0) saturate(100%) invert(64%) sepia(55%) saturate(574%)
-    hue-rotate(8deg) brightness(92%) contrast(93%);
-  transform: scale(1.1);
 }
 
 /*RESPONSIVE*/
@@ -1573,6 +1577,7 @@ body.menu-open {
     left: 0;
     width: 100%;
     height: 100vh;
+    background-color: var(--primary-color);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -1726,13 +1731,6 @@ body.menu-open {
   .footer-nav a {
     font-size: 0.75rem;
   }
-  .footer-socials {
-    gap: 1rem;
-  }
-  .social-link {
-    width: 36px;
-    height: 36px;
-  }
   .scroll-to-top {
     bottom: 20px;
     right: 20px;
@@ -1790,9 +1788,9 @@ body.menu-open {
   .stats-title {
     font-size: 1.5rem;
   }
-  .risk-content h1,
-  .process-section h1,
-  .benefits-content h1 {
+  .risk-content h2,
+  .process-section h2,
+  .benefits-content h2 {
     font-size: 1.6rem;
   }
   .risk-btn {
@@ -1806,7 +1804,7 @@ body.menu-open {
   .card-content {
     padding: 1.5rem;
   }
-  .card-content h2 {
+  .card-content h3 {
     font-size: 1.2rem;
   }
   .card-content p {
@@ -1896,13 +1894,6 @@ body.menu-open {
   .footer-nav a {
     font-size: 0.8rem;
   }
-  .footer-socials {
-    gap: 0.8rem;
-  }
-  .social-link {
-    width: 34px;
-    height: 34px;
-  }
   .stat-number {
     font-size: 2.5rem;
   }
@@ -1927,9 +1918,9 @@ body.menu-open {
   .hero-content h2 {
     font-size: 0.9rem;
   }
-  .risk-content h1,
-  .process-section h1,
-  .benefits-content h1 {
+  .risk-content h2,
+  .process-section h2,
+  .benefits-content h2 {
     font-size: 1.4rem;
   }
   .section-title,

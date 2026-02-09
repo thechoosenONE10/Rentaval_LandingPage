@@ -45,26 +45,35 @@ hamburger.addEventListener("click", () => {
 // Cerrar menú al hacer click en un link
 navLinks.forEach((link) => {
   link.addEventListener("click", (e) => {
-    e.preventDefault();
+    // Solo prevenir default si es un enlace anchor (#)
+    const href = link.getAttribute("href");
+    if (href.startsWith("#")) {
+      e.preventDefault();
 
-    // Obtener el destino
-    const targetId = link.getAttribute("href");
-    const targetSection = document.querySelector(targetId);
+      // Obtener el destino
+      const targetId = href;
+      const targetSection = document.querySelector(targetId);
 
-    // Cerrar el menú
-    hamburger.classList.remove("active");
-    navbarMenu.classList.remove("active");
-    body.classList.remove("menu-open");
+      // Cerrar el menú
+      hamburger.classList.remove("active");
+      navbarMenu.classList.remove("active");
+      body.classList.remove("menu-open");
 
-    // Scroll suave a la sección
-    if (targetSection) {
-      const navbarHeight = document.querySelector(".navbar").offsetHeight;
-      const targetPosition = targetSection.offsetTop - navbarHeight;
+      // Scroll suave a la sección
+      if (targetSection) {
+        const navbarHeight = document.querySelector(".navbar").offsetHeight;
+        const targetPosition = targetSection.offsetTop - navbarHeight;
 
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      });
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth",
+        });
+      }
+    } else {
+      // Para enlaces externos, simplemente cerrar el menú
+      hamburger.classList.remove("active");
+      navbarMenu.classList.remove("active");
+      body.classList.remove("menu-open");
     }
   });
 });
@@ -137,7 +146,7 @@ const counterObserver = new IntersectionObserver(
             if (target === 1000) {
               counter.textContent = "+1,000";
             } else if (target === 40000000) {
-              counter.textContent = "$40,000,000";
+              counter.textContent = "+40,000,000";
             } else if (target === 3) {
               counter.textContent = "-3%";
             } else if (target === 121) {
@@ -158,52 +167,6 @@ const counters = document.querySelectorAll(".stat-number");
 counters.forEach((counter) => {
   counterObserver.observe(counter);
 });
-
-// ================================
-// PARALLAX EFFECT FOR INVESTIGATION SECTION (DESKTOP ONLY)
-// ================================
-const investigationSection = document.querySelector(
-  ".investigation-hero-section"
-);
-const investigationImg = document.querySelector(".investigation-hero-img");
-
-function updateInvestigationParallax() {
-  if (window.innerWidth > 768 && investigationSection && investigationImg) {
-    const rect = investigationSection.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-
-    // Solo calculamos si la sección es visible en el viewport
-    if (rect.top < windowHeight && rect.bottom > 0) {
-      // Punto 0: La sección entra por abajo
-      // Punto 1: La sección sale por arriba
-      const totalDist = windowHeight + rect.height;
-      const currentDist = windowHeight - rect.top;
-      let progress = currentDist / totalDist;
-
-      progress = Math.max(0, Math.min(1, progress));
-
-      // El valor 30 corresponde al 130% de altura en CSS
-      const movementRange = 30;
-      const translateY = -(progress * movementRange);
-
-      // Usamos requestAnimationFrame para que sea suave (60fps)
-      requestAnimationFrame(() => {
-        investigationImg.style.transform = `translateY(${translateY}%)`;
-      });
-    }
-  } else if (investigationImg) {
-    investigationImg.style.transform = "translateY(0)";
-  }
-}
-
-// Aplicar parallax al scroll
-if (investigationSection && investigationImg) {
-  window.addEventListener("scroll", updateInvestigationParallax, {
-    passive: true,
-  });
-  window.addEventListener("resize", updateInvestigationParallax);
-  window.addEventListener("load", updateInvestigationParallax);
-}
 
 // ================================
 // SCROLL TO TOP BUTTON
@@ -250,62 +213,237 @@ rippleButtons.forEach((button) => {
 });
 
 // ================================
-// FORM VALIDATION & ANIMATION
+// FORM VALIDATION & SECURITY
 // ================================
-const contactForm = document.querySelector(".contact-form");
+const contactForm = document.getElementById("contactForm");
+
+// Validación helpers
+const validators = {
+  email: (value) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!value.trim()) return "El correo es requerido";
+    if (!emailRegex.test(value)) return "Correo electrónico inválido";
+    if (value.length > 150) return "Correo demasiado largo";
+    return null;
+  },
+  phone: (value) => {
+    const phoneRegex = /^[\d\s\-\+\(\)]{8,}$/;
+    if (!value.trim()) return "El número es requerido";
+    if (!phoneRegex.test(value)) return "Número de teléfono inválido";
+    if (value.length > 20) return "Número demasiado largo";
+    return null;
+  },
+  city: (value) => {
+    if (!value.trim()) return "La ciudad es requerida";
+    if (value.length < 5) return "Ciudad demasiado corta";
+    if (value.length > 100) return "Ciudad demasiado larga";
+    // Prevenir inyección de scripts
+    if (/<|>|&lt;|&gt;/.test(value)) return "Caracteres no permitidos";
+    return null;
+  },
+  service: (value) => {
+    if (!value.trim()) return "El tipo de servicio es requerido";
+    if (value.length < 10) return "Aclare el tipo de servicio";
+    if (value.length > 200) return "Texto muy largo";
+    // Prevenir inyección de scripts
+    if (/<|>|&lt;|&gt;/.test(value)) return "Caracteres no permitidos";
+    return null;
+  },
+  amount: (value) => {
+    // Campo opcional
+    if (!value.trim()) return null;
+    if (value.length > 50) return "Monto demasiado largo";
+    return null;
+  },
+};
+
+// Sanitizar input
+function sanitizeInput(value) {
+  return value
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;")
+    .replace(/\//g, "&#x2F;");
+}
+
+// Mostrar error
+function showError(inputId, message) {
+  const input = document.getElementById(inputId);
+  const errorElement = document.getElementById(`${inputId}-error`);
+
+  input.classList.add("error");
+  input.classList.remove("success");
+  errorElement.textContent = message;
+  errorElement.classList.add("visible");
+}
+
+// Limpiar error
+function clearError(inputId) {
+  const input = document.getElementById(inputId);
+  const errorElement = document.getElementById(`${inputId}-error`);
+
+  input.classList.remove("error");
+  input.classList.add("success");
+  errorElement.textContent = "";
+  errorElement.classList.remove("visible");
+}
+
+// Validar campo individual
+function validateField(inputId) {
+  const input = document.getElementById(inputId);
+  const validator = validators[inputId];
+
+  if (!validator) return true;
+
+  const error = validator(input.value);
+  if (error) {
+    showError(inputId, error);
+    return false;
+  } else {
+    clearError(inputId);
+    return true;
+  }
+}
+
+// Rate limiting para prevenir spam
+let lastSubmitTime = 0;
+const SUBMIT_COOLDOWN = 10000; // 10 segundos entre envíos
 
 if (contactForm) {
-  contactForm.addEventListener("submit", (e) => {
+  // Validación en tiempo real
+  const formInputs = ["email", "phone", "city", "service", "amount"];
+
+  formInputs.forEach((inputId) => {
+    const input = document.getElementById(inputId);
+    if (input) {
+      // Validar al perder el foco
+      input.addEventListener("blur", () => validateField(inputId));
+
+      // Limpiar errores mientras escribe
+      input.addEventListener("input", () => {
+        const errorElement = document.getElementById(`${inputId}-error`);
+        if (errorElement.classList.contains("visible")) {
+          validateField(inputId);
+        }
+      });
+
+      // Animaciones de foco
+      input.addEventListener("focus", () => {
+        input.parentElement.classList.add("focused");
+      });
+
+      input.addEventListener("blur", () => {
+        if (!input.value) {
+          input.parentElement.classList.remove("focused");
+        }
+      });
+    }
+  });
+
+  // Manejo del envío del formulario con Web3Forms
+  contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Get form data
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
+    // Rate limiting
+    const now = Date.now();
+    if (now - lastSubmitTime < SUBMIT_COOLDOWN) {
+      alert("Por favor espera unos segundos antes de enviar otro mensaje.");
+      return;
+    }
 
-    // Simple validation
-    const inputs = contactForm.querySelectorAll("input");
+    // Validar todos los campos
     let isValid = true;
-
-    inputs.forEach((input) => {
-      if (!input.value.trim()) {
+    formInputs.forEach((inputId) => {
+      if (!validateField(inputId)) {
         isValid = false;
-        input.style.borderColor = "#ff4444";
-        setTimeout(() => {
-          input.style.borderColor = "";
-        }, 2000);
       }
     });
 
-    if (isValid) {
-      // Show success message
-      const submitBtn = contactForm.querySelector(".btn-send");
-      const originalText = submitBtn.textContent;
-      submitBtn.textContent = "¡Mensaje enviado!";
-      submitBtn.style.background = "linear-gradient(135deg, #4CAF50, #45a049)";
+    if (!isValid) {
+      // Hacer scroll al primer error
+      const firstError = contactForm.querySelector(".error");
+      if (firstError) {
+        firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      return;
+    }
+
+    // Preparar datos para Web3Forms
+    const formData = new FormData(contactForm);
+
+    // Sanitizar los valores antes de enviar
+    const sanitizedData = new FormData();
+    for (let [key, value] of formData.entries()) {
+      // No sanitizar campos de sistema de Web3Forms
+      if (
+        key === "access_key" ||
+        key === "subject" ||
+        key === "from_name" ||
+        key === "botcheck"
+      ) {
+        sanitizedData.append(key, value);
+      } else {
+        sanitizedData.append(key, sanitizeInput(value));
+      }
+    }
+
+    // Deshabilitar botón de envío
+    const submitBtn = contactForm.querySelector(".btn-send");
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Enviando...";
+
+    try {
+      // Enviar a Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: sanitizedData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        // Actualizar timestamp del último envío
+        lastSubmitTime = Date.now();
+
+        // Mostrar mensaje de éxito
+        submitBtn.textContent = "¡Mensaje enviado!";
+        submitBtn.style.background =
+          "linear-gradient(135deg, #16a34a, #15803d)";
+
+        // Limpiar formulario
+        setTimeout(() => {
+          contactForm.reset();
+          submitBtn.textContent = originalText;
+          submitBtn.style.background = "";
+          submitBtn.disabled = false;
+
+          // Limpiar estados de validación
+          formInputs.forEach((inputId) => {
+            const input = document.getElementById(inputId);
+            if (input) {
+              input.classList.remove("success");
+              clearError(inputId);
+            }
+          });
+        }, 3000);
+
+        console.log("Formulario enviado exitosamente a Web3Forms");
+      } else {
+        throw new Error(result.message || "Error al enviar el formulario");
+      }
+    } catch (error) {
+      console.error("Error al enviar el formulario:", error);
+      submitBtn.textContent = "Error al enviar";
+      submitBtn.style.background = "linear-gradient(135deg, #dc2626, #b91c1c)";
 
       setTimeout(() => {
         submitBtn.textContent = originalText;
         submitBtn.style.background = "";
-        contactForm.reset();
+        submitBtn.disabled = false;
       }, 3000);
-
-      // Here you would typically send the data to a server
-      console.log("Form data:", data);
     }
-  });
-
-  // Add focus animations to inputs
-  const formInputs = contactForm.querySelectorAll("input");
-  formInputs.forEach((input) => {
-    input.addEventListener("focus", () => {
-      input.parentElement.classList.add("focused");
-    });
-
-    input.addEventListener("blur", () => {
-      if (!input.value) {
-        input.parentElement.classList.remove("focused");
-      }
-    });
   });
 }
 
@@ -380,22 +518,6 @@ cards.forEach((card) => {
 });
 
 // ================================
-// ANIMATED GRADIENT BACKGROUNDS
-// ================================
-const gradientSections = document.querySelectorAll(
-  ".risk-section, .protection-section"
-);
-
-gradientSections.forEach((section) => {
-  let angle = 0;
-
-  setInterval(() => {
-    angle = (angle + 1) % 360;
-    // This is handled by CSS animations, but we could add more dynamic effects here
-  }, 50);
-});
-
-// ================================
 // LOADING ANIMATION
 // ================================
 window.addEventListener("load", () => {
@@ -440,7 +562,6 @@ window.addEventListener(
 // ================================
 // ACCESSIBILITY IMPROVEMENTS
 // ================================
-// Add keyboard navigation support
 document.addEventListener("keydown", (e) => {
   // Close menu with Escape key
   if (e.key === "Escape" && navbarMenu.classList.contains("active")) {
@@ -462,5 +583,25 @@ document.addEventListener("keydown", (e) => {
       top: document.documentElement.scrollHeight,
       behavior: "smooth",
     });
+  }
+});
+
+// ================================
+// SECURITY: Prevenir ataques XSS en URLs
+// ================================
+window.addEventListener("DOMContentLoaded", () => {
+  // Limpiar query parameters sospechosos
+  const urlParams = new URLSearchParams(window.location.search);
+  let hasSuspicious = false;
+
+  for (let [key, value] of urlParams.entries()) {
+    if (/<script|javascript:|onerror=/i.test(value)) {
+      hasSuspicious = true;
+      break;
+    }
+  }
+
+  if (hasSuspicious) {
+    window.history.replaceState({}, document.title, window.location.pathname);
   }
 });
